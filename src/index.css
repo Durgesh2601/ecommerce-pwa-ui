@@ -7,3 +7,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.main {
+  margin-top: 2rem;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.cart-count {
+  top: -0.4rem;
+  right: -0.5rem;
+}
