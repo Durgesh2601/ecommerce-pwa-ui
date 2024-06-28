@@ -5,24 +5,28 @@ const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
+  const isCartEmpty = cartItems?.length === 0;
   const handleRemoveItem = (item) => {
     dispatch(removeItem(item));
   };
+
   return (
-    <div className="bg-white p-2 shadow-md rounded-md">
-      <h2 className="text-2xl font-semibold mb-4">Cart</h2>
-      {cartItems.length === 0 ? (
+    <div className="bg-white p-2 mt-10 shadow-md rounded-md">
+      <h2 className="text-2xl font-semibold mb-4">
+        Cart {!isCartEmpty ? `(${cartItems?.length})` : ""}
+      </h2>
+      {isCartEmpty ? (
         <p>Your cart is empty.</p>
       ) : (
         <ul>
           {cartItems.map((item) => (
             <li
               key={item.id}
-              className="flex items-center justify-between border-b py-2"
+              className="flex items-center justify-between border-b py-2 p-2 mb-2"
             >
               <div className="flex items-center">
                 <img
-                  src={item.imageUrl}
+                  src={item?.image}
                   alt={item.title}
                   className="w-12 h-12 object-cover"
                 />

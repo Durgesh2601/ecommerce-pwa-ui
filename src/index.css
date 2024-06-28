@@ -9,9 +9,14 @@
 }
 
 .main {
-  margin-top: 8rem;
+  margin-top: 2rem;
 }
 
 .fixed {
   position: fixed;
+}
+
+.cart-count {
+  top: -0.4rem;
+  right: -0.5rem;
 }

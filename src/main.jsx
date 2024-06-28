@@ -8,12 +8,17 @@ import Cart from "./components/Cart/Cart.jsx";
 import About from "./components/About/About.jsx";
 import Contact from "./components/Contact/Contact.jsx";
 import "./index.css";
+import ProductList from "./components/ProductList/ProductList.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        path: "/",
+        element: <ProductList />,
+      },
       {
         path: "/cart",
         element: <Cart />,
