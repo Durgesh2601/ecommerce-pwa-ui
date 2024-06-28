@@ -11,39 +11,41 @@ const Cart = () => {
   };
 
   return (
-    <div className="bg-white p-2 mt-10 shadow-md rounded-md">
+    <div className="bg-white p-4 mt-10 shadow-md rounded-md">
       <h2 className="text-2xl font-semibold mb-4">
         Cart {!isCartEmpty ? `(${cartItems?.length})` : ""}
       </h2>
       {isCartEmpty ? (
-        <p>Your cart is empty.</p>
+        <p className="text-center">Your cart is empty.</p>
       ) : (
-        <ul>
+        <div>
           {cartItems.map((item) => (
-            <li
+            <div
               key={item.id}
-              className="flex items-center justify-between border-b py-2 p-2 mb-2"
+              className="flex items-start border-b border-gray-200 py-4"
             >
               <div className="flex items-center">
                 <img
-                  src={item?.image}
+                  src={item.image}
                   alt={item.title}
-                  className="w-12 h-12 object-cover"
+                  className="w-16 h-16 object-cover rounded-md"
                 />
-                <div className="ml-2">
-                  <p className="font-semibold">{item.title}</p>
-                  <p className="text-gray-600">${item.price}</p>
+                <div className="ml-4">
+                  <div className="font-semibold">{item.title}</div>
+                  <p className="text-gray-700">${item.price}</p>
                 </div>
               </div>
-              <button
-                onClick={() => handleRemoveItem(item)}
-                className="text-red-600 hover:text-red-800"
-              >
-                Remove
-              </button>
-            </li>
+              <div className="ml-auto flex items-center">
+                <button
+                  onClick={() => handleRemoveItem(item)}
+                  className="text-red-600 hover:text-red-800 ml-4"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
