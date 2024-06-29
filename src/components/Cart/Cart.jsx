@@ -4,6 +4,7 @@ import { calculateTotalPrice } from "../../utils";
 import { useState } from "react";
 import Notification from "../Notification/Notification";
 import { NOTIFICATION_MSGS } from "../../constants";
+import CustomImage from "../CustomImage/CustomImage";
 
 const Cart = () => {
   const [notificationVisible, setNotificationVisible] = useState(false);
@@ -31,7 +32,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="bg-white p-4 mt-10 shadow-md rounded-md">
+    <div className="bg-white p-4 mt-10 mb-12 shadow-md rounded-md">
       <h2 className="text-2xl font-semibold mb-4">
         Cart {!isCartEmpty ? `(${cartItems?.length})` : ""}
       </h2>
@@ -45,7 +46,7 @@ const Cart = () => {
               className="flex flex-col sm:flex-row items-start border-b border-gray-200 py-4"
             >
               <div className="flex items-center w-full sm:w-auto">
-                <img
+                <CustomImage
                   src={item.image}
                   alt={item.title}
                   className="w-16 h-16 object-cover rounded-md"
