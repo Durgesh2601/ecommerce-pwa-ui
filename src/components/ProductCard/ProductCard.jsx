@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { addItem, removeItem } from "../../redux/cartSlice";
 import Notification from "../Notification/Notification";
+import { NOTIFICATION_MSGS } from "../../constants";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ const ProductCard = ({ product }) => {
         </button>
       )}
       <Notification
-        message="Product added to cart!"
+        message={NOTIFICATION_MSGS.ADD_PRODUCT}
         visible={notificationVisible}
       />
     </div>

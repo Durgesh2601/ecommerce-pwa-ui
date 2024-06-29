@@ -15,3 +15,9 @@ export const NAVLINKS = [
     label: "Contact",
   },
 ];
+
+export const NOTIFICATION_MSGS = {
+  ADD_PRODUCT: "Product added to cart!",
+  REMOVE_PRODUCT: "Product removed from cart!",
+  CART_CLEAR: "All products removed from cart!",
+};
