@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState } from 'react';
 
-const CustomImage = ({ src, alt, className = "" }) => {
+const CustomImage = ({ src, alt, className = '' }) => {
   const [loaded, setLoaded] = useState(false);
 
   const handleImageLoaded = () => {
@@ -17,8 +17,8 @@ const CustomImage = ({ src, alt, className = "" }) => {
       )}
       <img
         src={src}
-        alt={alt || "Custom Image"}
-        className={`rounded-md ${className} ${loaded ? "block" : "hidden"}`}
+        alt={alt || 'Custom Image'}
+        className={`rounded-md ${className} ${loaded ? 'block' : 'hidden'}`}
         style={{ opacity: loaded ? 1 : 0 }}
         onLoad={handleImageLoaded}
       />

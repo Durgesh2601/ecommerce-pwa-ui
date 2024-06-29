@@ -1,8 +1,8 @@
-import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { NAVLINKS } from "../../constants";
-import logo from "../../assets/logo.svg";
+import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { NAVLINKS } from '../../constants';
+import logo from '../../assets/logo.svg';
 
 const NavigationMenu = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -16,10 +16,10 @@ const NavigationMenu = () => {
       }
     };
 
-    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener('mousedown', handleOutsideClick);
 
     return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, []);
 
@@ -29,7 +29,7 @@ const NavigationMenu = () => {
 
   return (
     <nav className="bg-blue-500 text-white p-4 fixed top-0 left-0 w-full z-10 flex justify-between items-center">
-      <Link to={"/"}>
+      <Link to={'/'}>
         <div className="flex items-center">
           <img src={logo} alt="Logo" className="w-8 h-8 mr-2" />
           <span className="text-xl font-semibold">My E-Commerce</span>
@@ -61,7 +61,7 @@ const NavigationMenu = () => {
       <div
         ref={drawerRef}
         className={`md:hidden fixed top-0 right-0 h-full bg-blue-500 w-64 overflow-y-auto z-20 transform transition-transform ease-in-out duration-300 ${
-          isDrawerOpen ? "translate-x-0" : "translate-x-full"
+          isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <div className="p-4">
@@ -120,7 +120,7 @@ const NavigationMenu = () => {
 
             {cartItems.length > 0 && (
               <span className="absolute cart-count top-0 right-0 bg-red-600 text-white rounded-full px-1.5 text-xs">
-                {cartItems.length > 9 ? "9+" : cartItems.length}
+                {cartItems.length > 9 ? '9+' : cartItems.length}
               </span>
             )}
           </Link>
