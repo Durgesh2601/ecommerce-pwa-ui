@@ -83,6 +83,42 @@ The application uses the [Fake Store API](https://fakestoreapi.com/) to fetch pr
 
 - **GET /products**: Fetches a list of all products.
 
+## Code Formatting and Linting
+
+This project uses Prettier and ESLint to ensure code consistency and quality. Additionally, Husky and lint-staged are used to automatically format and lint code before commits.
+
+### Setting Up
+
+1. **Install Dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+2. **Install Husky**:
+
+   ```bash
+   npx husky install
+   ```
+
+### Configuration
+
+- **Prettier**: Configuration is located in `.prettierrc`.
+- **ESLint**: Configuration is located in `.eslintrc.js`.
+- **Husky**: Pre-commit hook is set up to run lint-staged.
+- **lint-staged**: Configured in `package.json` to format and lint staged files.
+
+### Running Formatters and Linters
+
+You can manually run Prettier and ESLint using the following commands:
+
+- **Prettier**: `npx prettier --write .`
+- **ESLint**: `npx eslint --fix .`
+
+On each commit, Husky will automatically run lint-staged, which in turn runs Prettier and ESLint on staged files.
+
+For more information, see the [Prettier](https://prettier.io/), [ESLint](https://eslint.org/), [Husky](https://typicode.github.io/husky/#/), and [lint-staged](https://github.com/okonet/lint-staged) documentation.
+
 ## Development
 
 - **Component-Based**: Built using reusable components for modularity and maintainability.
