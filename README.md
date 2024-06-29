@@ -104,7 +104,7 @@ This project uses Prettier and ESLint to ensure code consistency and quality. Ad
 ### Configuration
 
 - **Prettier**: Configuration is located in `.prettierrc`.
-- **ESLint**: Configuration is located in `.eslintrc.js`.
+- **ESLint**: Configuration is located in `.eslintrc.cjs`.
 - **Husky**: Pre-commit hook is set up to run lint-staged.
 - **lint-staged**: Configured in `package.json` to format and lint staged files.
 
