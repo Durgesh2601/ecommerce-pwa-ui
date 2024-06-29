@@ -13,17 +13,3 @@ export const fetchAllProducts = async () => {
     throw error;
   }
 };
-
-export const fetchSingleProduct = async (productId) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/${productId}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch product");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching product:", error);
-    throw error;
-  }
-};
