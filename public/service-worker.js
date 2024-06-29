@@ -2,7 +2,7 @@ const CACHE_NAME = 'my-ecommerce-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/src/main.js',
+  '/src/main.jsx',
   // Add more files as needed
 ];
 
@@ -17,13 +17,31 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
         if (response) {
-          return response;
+          return response; // Return cached response if available
         }
-        return fetch(event.request);
+        return fetch(event.request).then((fetchResponse) => {
+          return caches.open(CACHE_NAME).then((cache) => {
+            if (event.request.url.startsWith('http')) {
+              // Cache API responses dynamically
+              cache.put(event.request, fetchResponse.clone());
+            }
+            return fetchResponse;
+          });
+        });
+      }).catch(() => {
+        // Provide fallback response if network request fails and there's no cache match
+        if (event.request.url.includes('/api/')) {
+          return new Response(JSON.stringify({ error: 'Network error, please try again later.' }), {
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
+        return caches.match('/offline.html');
       })
   );
 });
