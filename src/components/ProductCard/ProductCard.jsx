@@ -3,29 +3,39 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { addItem, removeItem } from "../../redux/cartSlice";
 import Notification from "../Notification/Notification";
+import { NOTIFICATION_MSGS } from "../../constants";
+import CustomImage from "../CustomImage/CustomImage";
 
 const ProductCard = ({ product }) => {
+  const [notificationMsg, setNotificationMsg] = useState("");
+  const [notificationVisible, setNotificationVisible] = useState(false);
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
   const isProductInCart = cartItems.some((item) => item.id === product.id);
-  const [notificationVisible, setNotificationVisible] = useState(false);
 
-  const handleAddToCart = () => {
-    dispatch(addItem(product));
+  const handleNotificationState = () => {
     setNotificationVisible(true);
     setTimeout(() => {
       setNotificationVisible(false);
     }, 2000); // Hide notification after 2 seconds
   };
 
+  const handleAddToCart = () => {
+    dispatch(addItem(product));
+    setNotificationMsg(NOTIFICATION_MSGS.ADD_PRODUCT);
+    handleNotificationState();
+  };
+
   const handleRemoveFromCart = () => {
     dispatch(removeItem(product));
+    setNotificationMsg(NOTIFICATION_MSGS.REMOVE_PRODUCT);
+    handleNotificationState();
   };
 
   return (
     <div className="bg-white p-4 shadow-md rounded-md flex flex-col justify-between h-full">
       <div>
-        <img
+        <CustomImage
           src={product?.image}
           alt={product?.title}
           className="w-full h-44 object-contain rounded-md"
@@ -50,10 +60,7 @@ const ProductCard = ({ product }) => {
           Add to Cart
         </button>
       )}
-      <Notification
-        message="Product added to cart!"
-        visible={notificationVisible}
-      />
+      <Notification message={notificationMsg} visible={notificationVisible} />
     </div>
   );
 };

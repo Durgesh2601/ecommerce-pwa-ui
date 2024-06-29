@@ -7,8 +7,21 @@ import store from "./redux/store.js";
 import Cart from "./components/Cart/Cart.jsx";
 import About from "./components/About/About.jsx";
 import Contact from "./components/Contact/Contact.jsx";
-import "./index.css";
 import ProductList from "./components/ProductList/ProductList.jsx";
+import "./index.css";
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((registration) => {
+        console.log("SW registered: ", registration);
+      })
+      .catch((registrationError) => {
+        console.log("SW registration failed: ", registrationError);
+      });
+  });
+}
 
 const router = createBrowserRouter([
   {
