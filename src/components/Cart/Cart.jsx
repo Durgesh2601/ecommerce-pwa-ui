@@ -1,14 +1,15 @@
-import { useSelector, useDispatch } from "react-redux";
-import { removeItem, clearCart } from "../../redux/cartSlice";
-import { calculateTotalPrice } from "../../utils";
-import { useState } from "react";
-import Notification from "../Notification/Notification";
-import { NOTIFICATION_MSGS } from "../../constants";
-import CustomImage from "../CustomImage/CustomImage";
+import { useSelector, useDispatch } from 'react-redux';
+import { removeItem, clearCart } from '../../redux/cartSlice';
+import { calculateTotalPrice } from '../../utils';
+import { useState } from 'react';
+import Notification from '../Notification/Notification';
+import { NOTIFICATION_MSGS } from '../../constants';
+import CustomImage from '../CustomImage/CustomImage';
+import Header from '../Header/Header';
 
 const Cart = () => {
   const [notificationVisible, setNotificationVisible] = useState(false);
-  const [notificationMsg, setNotificationMsg] = useState("");
+  const [notificationMsg, setNotificationMsg] = useState('');
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
   const isCartEmpty = cartItems?.length === 0;
@@ -33,9 +34,9 @@ const Cart = () => {
 
   return (
     <div className="bg-white p-4 mt-10 mb-12 shadow-md rounded-md">
-      <h2 className="text-2xl font-semibold mb-4">
-        Cart {!isCartEmpty ? `(${cartItems?.length})` : ""}
-      </h2>
+      <Header
+        content={`Cart ${!isCartEmpty ? `(${cartItems?.length})` : ''}`}
+      />
       {isCartEmpty ? (
         <p className="text-center">Your cart is empty.</p>
       ) : (

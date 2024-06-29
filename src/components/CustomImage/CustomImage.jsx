@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState } from 'react';
 
-const CustomImage = ({ src, alt, className = "" }) => {
+const CustomImage = ({ src, alt, className = '' }) => {
   const [loaded, setLoaded] = useState(false);
 
   const handleImageLoaded = () => {
@@ -13,12 +13,12 @@ const CustomImage = ({ src, alt, className = "" }) => {
   return (
     <div className={`relative ${className}`}>
       {!loaded && (
-        <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse rounded-md overflow-hidden"></div>
+        <div className="absolute inset-1 bg-gray-200 dark:bg-gray-300 animate-pulse rounded-md overflow-hidden"></div>
       )}
       <img
         src={src}
-        alt={alt || "Custom Image"}
-        className={`rounded-md ${className} ${loaded ? "block" : "hidden"}`}
+        alt={alt || 'Custom Image'}
+        className={`rounded-md ${className} ${loaded ? 'block' : 'hidden'}`}
         style={{ opacity: loaded ? 1 : 0 }}
         onLoad={handleImageLoaded}
       />

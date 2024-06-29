@@ -1,29 +1,15 @@
-const API_BASE_URL = "https://fakestoreapi.com/products";
+const API_BASE_URL = 'https://fakestoreapi.com/products';
 
 export const fetchAllProducts = async () => {
   try {
     const response = await fetch(API_BASE_URL);
     if (!response.ok) {
-      throw new Error("Failed to fetch products");
+      throw new Error('Failed to fetch products');
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error fetching products:", error);
-    throw error;
-  }
-};
-
-export const fetchSingleProduct = async (productId) => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/${productId}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch product");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error fetching product:", error);
+    console.error('Error fetching products:', error);
     throw error;
   }
 };

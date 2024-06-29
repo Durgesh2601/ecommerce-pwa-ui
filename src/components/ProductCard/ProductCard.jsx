@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { addItem, removeItem } from "../../redux/cartSlice";
-import Notification from "../Notification/Notification";
-import { NOTIFICATION_MSGS } from "../../constants";
-import CustomImage from "../CustomImage/CustomImage";
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { addItem, removeItem } from '../../redux/cartSlice';
+import Notification from '../Notification/Notification';
+import { NOTIFICATION_MSGS } from '../../constants';
+import CustomImage from '../CustomImage/CustomImage';
 
 const ProductCard = ({ product }) => {
-  const [notificationMsg, setNotificationMsg] = useState("");
+  const [notificationMsg, setNotificationMsg] = useState('');
   const [notificationVisible, setNotificationVisible] = useState(false);
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
